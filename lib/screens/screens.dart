@@ -1,0 +1,34 @@
+import 'dart:io';
+
+import 'package:bottom_navy_bar/bottom_navy_bar.dart';
+import 'package:dotted_line/dotted_line.dart';
+import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
+import 'package:provider/provider.dart';
+import 'package:select_form_field/select_form_field.dart';
+import 'package:sipmas/decoration/decorations.dart';
+import 'package:sipmas/screens/pegawai/pegawai_screens.dart';
+import 'package:url_launcher/url_launcher.dart';
+import 'package:whatsapp_unilink/whatsapp_unilink.dart';
+import 'kadin/kadin_screens.dart';
+import 'kadin/main_screen_kadin.dart';
+import 'package:sipmas/widgets/widgets.dart';
+import 'package:timeline_tile/timeline_tile.dart';
+import 'dart:async';
+
+import 'package:sipmas/model/models.dart';
+import 'package:sipmas/provider/providers.dart';
+part 'home_screen.dart';
+part 'main_screen.dart';
+part 'login_screen.dart';
+part 'register_screen.dart';
+part 'validasi_screen.dart';
+part 'beranda_screen.dart';
+part 'surat_pindah_screen.dart';
+part 'surat_kematian_screen.dart';
+part 'tracking_screen.dart';
+part 'surat_nikah_screen.dart';
+part 'splash_screen.dart';
+part 'detail_berita_screen.dart';
+part 'data_surat_masyarakat_screen.dart';
+part 'detail_masyarakat_screen.dart';
