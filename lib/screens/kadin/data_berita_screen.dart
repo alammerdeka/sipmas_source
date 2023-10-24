@@ -1,6 +1,6 @@
 part of 'kadin_screens.dart';
 class DataBeritaScreen extends StatefulWidget {
-  const DataBeritaScreen({Key key}) : super(key: key);
+  const DataBeritaScreen({super.key});
 
   @override
   State<DataBeritaScreen> createState() => _DataBeritaScreenState();

@@ -9,7 +9,7 @@ import 'package:sipmas/screens/kadin/kadin_screens.dart';
 import '../screens.dart';
 
 class MainScreenKadin extends StatefulWidget {
-  const MainScreenKadin({Key key}) : super(key: key);
+  const MainScreenKadin({super.key});
 
   @override
   State<MainScreenKadin> createState() => _MainScreenKadinState();

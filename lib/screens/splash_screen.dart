@@ -1,6 +1,6 @@
 part of 'screens.dart';
 class SplashScreen extends StatefulWidget {
-  const SplashScreen({Key key}) : super(key: key);
+  const SplashScreen({super.key});
 
   @override
   State<SplashScreen> createState() => _SplashScreenState();
@@ -17,8 +17,11 @@ class _SplashScreenState extends State<SplashScreen> {
     await Provider.of<PegawaiProvider>(context, listen:false).getPegawais();
     await Provider.of<SuratProvider>(context, listen:false).getSurats();
     await Provider.of<UserProvider>(context, listen:false).getMasyarakat();
-    Navigator.of(context)
-        .pushReplacement(MaterialPageRoute(builder: (_) => HomeScreen()));
+    if(mounted){
+      Navigator.of(context)
+          .pushReplacement(MaterialPageRoute(builder: (_) => HomeScreen()));
+    }
+
   }
   @override
   Widget build(BuildContext context) {

@@ -1,7 +1,7 @@
 part of 'screens.dart';
 
 class SuratPindahScreen extends StatefulWidget {
-  const SuratPindahScreen({Key key}) : super(key: key);
+  const SuratPindahScreen({super.key});
 
   @override
   State<SuratPindahScreen> createState() => _SuratPindahScreenState();
@@ -22,8 +22,8 @@ class _SuratPindahScreenState extends State<SuratPindahScreen> {
   TextEditingController pengikutPindahController = TextEditingController();
 
 
-  DateTime _dateTime;
-  String _textDate;
+  DateTime? _dateTime;
+  String? _textDate;
   String selectJenkel = "";
   String selectAgama = "";
   String selectKawin = "";
@@ -33,7 +33,7 @@ class _SuratPindahScreenState extends State<SuratPindahScreen> {
 
   var myFormat = DateFormat('d-MM-yyyy');
   Future<Null> selectedTime(BuildContext context) async {
-    final DateTime picked = await showDatePicker(
+    final DateTime? picked = await showDatePicker(
         context: context,
         helpText: 'Tanggal Lahir',
         initialDate: DateTime.now(),
@@ -83,7 +83,7 @@ class _SuratPindahScreenState extends State<SuratPindahScreen> {
                             keyboardType: TextInputType.text,
                             decoration: fieldPrefIcon(
                                 Icon(Icons.account_circle),
-                                userProvider.user.pengNama),
+                                userProvider.user.pengNama!),
                           ),
                           decoration: BoxDecoration(
                             color: Colors.grey.shade100,
@@ -98,7 +98,7 @@ class _SuratPindahScreenState extends State<SuratPindahScreen> {
                             keyboardType: TextInputType.text,
                             decoration: fieldPrefIcon(
                                 Icon(Icons.fact_check_rounded),
-                                userProvider.user.pengNik),
+                                userProvider.user.pengNik!),
                           ),
                           decoration: BoxDecoration(
                             color: Colors.grey.shade100,
@@ -112,7 +112,7 @@ class _SuratPindahScreenState extends State<SuratPindahScreen> {
                             enabled: false,
                             keyboardType: TextInputType.text,
                             decoration: fieldPrefIcon(Icon(Icons.home_filled),
-                                userProvider.user.pengTempat),
+                                userProvider.user.pengTempat!),
                           ),
                           decoration: BoxDecoration(
                             color: Colors.grey.shade100,
@@ -126,7 +126,7 @@ class _SuratPindahScreenState extends State<SuratPindahScreen> {
                             enabled: false,
                             keyboardType: TextInputType.text,
                             decoration: fieldPrefIcon(Icon(Icons.date_range),
-                                userProvider.user.pengTanggal),
+                                userProvider.user.pengTanggal!),
                           ),
                           decoration: BoxDecoration(
                             color: Colors.grey.shade100,
@@ -140,7 +140,7 @@ class _SuratPindahScreenState extends State<SuratPindahScreen> {
                             enabled: false,
                             keyboardType: TextInputType.text,
                             decoration: fieldPrefIcon(
-                                Icon(Icons.grade), userProvider.user.pengAgama),
+                                Icon(Icons.grade), userProvider.user.pengAgama!),
                           ),
                           decoration: BoxDecoration(
                             color: Colors.grey.shade100,
@@ -155,7 +155,7 @@ class _SuratPindahScreenState extends State<SuratPindahScreen> {
                             keyboardType: TextInputType.text,
                             decoration: fieldPrefIcon(
                                 Icon(Icons.dataset_rounded),
-                                userProvider.user.pengStatusKawin),
+                                userProvider.user.pengStatusKawin!),
                           ),
                           decoration: BoxDecoration(
                             color: Colors.grey.shade100,
@@ -169,7 +169,7 @@ class _SuratPindahScreenState extends State<SuratPindahScreen> {
                             enabled: false,
                             keyboardType: TextInputType.text,
                             decoration: fieldPrefIcon(Icon(Icons.transgender),
-                                userProvider.user.pengJenisKelamin),
+                                userProvider.user.pengJenisKelamin!),
                           ),
                           decoration: BoxDecoration(
                             color: Colors.grey.shade100,
@@ -184,7 +184,7 @@ class _SuratPindahScreenState extends State<SuratPindahScreen> {
                             keyboardType: TextInputType.text,
                             decoration: fieldPrefIcon(
                                 Icon(Icons.account_balance_rounded),
-                                userProvider.user.pengInstansi),
+                                userProvider.user.pengInstansi!),
                           ),
                           decoration: BoxDecoration(
                             color: Colors.grey.shade100,
@@ -197,7 +197,7 @@ class _SuratPindahScreenState extends State<SuratPindahScreen> {
                             enabled: false,
                             keyboardType: TextInputType.text,
                             decoration: fieldPrefIcon(Icon(Icons.location_on),
-                                userProvider.user.pengAlamat),
+                                userProvider.user.pengAlamat!),
                           ),
                           decoration: BoxDecoration(
                             color: Colors.grey.shade100,
@@ -258,37 +258,37 @@ class _SuratPindahScreenState extends State<SuratPindahScreen> {
                             borderRadius: BorderRadius.circular(10),
                           ),
                         ),
-                        longButtons(MediaQuery.of(context).size.width,
-                            'Buat Surat', ()async{
+                        CupertinoButton(child: Text('Buat Surat'), onPressed: ()async{
                           if(  pindahKeController.text.isEmpty||
-                          alasanPindahController.text.isEmpty||
-                          pengikutPindahController.text.isEmpty){
+                              alasanPindahController.text.isEmpty||
+                              pengikutPindahController.text.isEmpty){
                             showError('Data tidak boleh kosong');
                           }else {
-                            Surat postSurat = await suratProvider.postPindah(
-                                userProvider.user.pengId,
+                            Surat? postSurat = await suratProvider.postPindah(
+                                userProvider.user.pengId!,
                                 'Surat Keterangan Pindah',
-                                userProvider.user.pengNama,
-                                userProvider.user.pengNik,
-                                userProvider.user.pengTempat,
-                                userProvider.user.pengTanggal,
-                                userProvider.user.pengAgama,
-                                userProvider.user.pengStatusKawin,
-                                userProvider.user.pengJenisKelamin,
-                                userProvider.user.pengInstansi,
-                                userProvider.user.pengAlamat,
+                                userProvider.user.pengNama!,
+                                userProvider.user.pengNik!,
+                                userProvider.user.pengTempat!,
+                                userProvider.user.pengTanggal!,
+                                userProvider.user.pengAgama!,
+                                userProvider.user.pengStatusKawin!,
+                                userProvider.user.pengJenisKelamin!,
+                                userProvider.user.pengInstansi!,
+                                userProvider.user.pengAlamat!,
                                 pindahKeController.text,
                                 alasanPindahController.text,
                                 pengikutPindahController.text
                             );
-                            if (postSurat.status == true) {
-                              getInit(userProvider.user.pengId);
+                            if (postSurat!.status == true) {
+                              getInit(userProvider.user.pengId!);
                               showSuccess('Berhasil Buat Surat');
                             } else {
                               showError('Gagal Buat Surat');
                             }
                           }
-                            })
+                        })
+
                       ],
                     ),
                   )
@@ -370,7 +370,7 @@ class _SuratPindahScreenState extends State<SuratPindahScreen> {
                                     BorderSide(width: 0, style: BorderStyle.none)),
                                 labelText: _textDate == null
                                     ? '  Pilih Tanggal'
-                                    : '  ${myFormat.format(_dateTime)}',
+                                    : '  ${myFormat.format(_dateTime!)}',
                                 labelStyle: _textDate == null
                                     ? TextStyle(color: Colors.grey, fontSize: 14)
                                     : TextStyle(
@@ -407,7 +407,7 @@ class _SuratPindahScreenState extends State<SuratPindahScreen> {
                           labelText: 'Shape',
                           items: listAgama,
                           onChanged: (value)  => selectAgama =value,
-                          onSaved: (value)  => selectAgama =value,
+                          onSaved: (value)  => selectAgama =value!,
                         ),
                       ), //agama
                       Padding(
@@ -430,7 +430,7 @@ class _SuratPindahScreenState extends State<SuratPindahScreen> {
                           labelText: 'Shape',
                           items: listKawin,
                           onChanged: (value) =>  selectKawin = value,
-                          onSaved: (value) =>  selectKawin = value,
+                          onSaved: (value) =>  selectKawin = value!,
                         ),
                       ),
                       Padding(
@@ -459,7 +459,7 @@ class _SuratPindahScreenState extends State<SuratPindahScreen> {
                           },
                           onSaved: (value){
                             setState(() {
-                              selectJenkel = value;
+                              selectJenkel = value!;
                             });
                           },
                         ),
@@ -484,7 +484,7 @@ class _SuratPindahScreenState extends State<SuratPindahScreen> {
                           labelText: 'Shape',
                           items: listInstansi,
                           onChanged: (value) => selectInstansi = value,
-                          onSaved: (value) => selectInstansi = value,
+                          onSaved: (value) => selectInstansi = value!,
                         ),
                       ),
                       Padding(
@@ -561,61 +561,59 @@ class _SuratPindahScreenState extends State<SuratPindahScreen> {
                         ),
                       ),
 
+                      CupertinoButton(child: Text('Buat Surat'), onPressed: ()async{
+                        print('lah');
+                        print(namaController.text);
+                        print(nikController.text);
+                        print(tempatController.text);
+                        print(_textDate);
+                        print(selectJenkel);
+                        print(selectAgama);
+                        print(selectKawin);
+                        print(alamatController.text);
+                        print(selectInstansi);
 
-                      longButtons(
-                          MediaQuery.of(context).size.width, 'Buat Surat',
-                          () async {
-                            print('lah');
-                            print(namaController.text);
-                            print(nikController.text);
-                            print(tempatController.text);
-                            print(_textDate);
-                            print(selectJenkel);
-                            print(selectAgama);
-                            print(selectKawin);
-                            print(alamatController.text);
-                            print(selectInstansi);
-
-                            if (namaController.text.isEmpty ||
-                                nikController.text.isEmpty ||
-                                tempatController.text.isEmpty ||
-                                _textDate == null ||
-                                selectJenkel.isEmpty ||
-                                selectAgama.isEmpty ||
-                                selectKawin.isEmpty ||
-                                alamatController.text.isEmpty ||
-                                selectInstansi.isEmpty||
-                                pindahKeController.text.isEmpty||
+                        if (namaController.text.isEmpty ||
+                            nikController.text.isEmpty ||
+                            tempatController.text.isEmpty ||
+                            _textDate == null ||
+                            selectJenkel.isEmpty ||
+                            selectAgama.isEmpty ||
+                            selectKawin.isEmpty ||
+                            alamatController.text.isEmpty ||
+                            selectInstansi.isEmpty||
+                            pindahKeController.text.isEmpty||
                             alasanPindahController.text.isEmpty||
                             pengikutPindahController.text.isEmpty) {
-                              showError('Data tidak boleh kosong');
-                              setState(() {
-                                _isLoading = true;
-                              });
-                            } else {
-                              Surat postSurat = await suratProvider.postPindah(
-                                  userProvider.user.pengId,
-                                  namaController.text,
-                                  'Surat Keterangan Pindah',
-                                  nikController.text,
-                                  tempatController.text,
-                                  _textDate,
-                                  selectJenkel,
-                                  selectAgama,
-                                  selectKawin,
-                                  alamatController.text,
-                                  selectInstansi,
-                                  pindahKeController.text,
-                                  alasanPindahController.text,
-                                  pengikutPindahController.text);
-                              if (postSurat.status == true) {
-                                getInit(userProvider.user.pengId);
-                                showSuccess('Berhasil Buat Surat');
-                              } else {
-                                showError('Gagal Buat Surat');
-                              }
-                            }
+                          showError('Data tidak boleh kosong');
+                          setState(() {
+                            _isLoading = true;
+                          });
+                        } else {
+                          Surat? postSurat = await suratProvider.postPindah(
+                              userProvider.user.pengId!,
+                              namaController.text,
+                              'Surat Keterangan Pindah',
+                              nikController.text,
+                              tempatController.text,
+                              _textDate!,
+                              selectJenkel!,
+                              selectAgama!,
+                              selectKawin!,
+                              alamatController.text,
+                              selectInstansi,
+                              pindahKeController.text,
+                              alasanPindahController.text,
+                              pengikutPindahController.text);
+                          if (postSurat!.status == true) {
+                            getInit(userProvider.user.pengId!);
+                            showSuccess('Berhasil Buat Surat');
+                          } else {
+                            showError('Gagal Buat Surat');
+                          }
+                        }
                       })
+
                     ],
                   )),
       );
@@ -728,12 +726,12 @@ class _SuratPindahScreenState extends State<SuratPindahScreen> {
 
 class _RightChild extends StatelessWidget {
   const _RightChild({
-    Key key,
-    this.asset,
-    this.title,
-    this.message,
+
+    required this.asset,
+    required this.title,
+    required this.message,
     this.disabled = false,
-  }) : super(key: key);
+  });
 
   final String asset;
   final String title;

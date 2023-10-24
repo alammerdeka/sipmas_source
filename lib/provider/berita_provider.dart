@@ -32,7 +32,7 @@ class BeritaProvider with ChangeNotifier {
       print(e);
     }
   }
-  Future<Berita> deleteBerita(String beritaId) async {
+  Future<Berita?> deleteBerita(String beritaId) async {
     try {
       var body = ({
         'beritaId': beritaId,

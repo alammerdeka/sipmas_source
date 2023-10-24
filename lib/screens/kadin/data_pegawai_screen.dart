@@ -1,6 +1,6 @@
 part of 'kadin_screens.dart';
 class DataPegawaiScreen extends StatefulWidget {
-  const DataPegawaiScreen({Key key}) : super(key: key);
+  const DataPegawaiScreen({super.key});
 
   @override
   State<DataPegawaiScreen> createState() => _DataPegawaiScreenState();
@@ -65,12 +65,12 @@ class _DataPegawaiScreenState extends State<DataPegawaiScreen> {
             ],
           ),
         ),
-        bottomNavigationBar: userProvider.user.grupNama!='Pegawai'?FloatingActionButton(
+        bottomNavigationBar: selectedIndex==0?userProvider.user.grupNama!='Pegawai'?FloatingActionButton(
           child: Center(child:Icon(Icons.add)),
           onPressed: (){
             Navigator.push(context, MaterialPageRoute(builder: (_)=>TambahPegawaiScreen()));
           },
-        ):SizedBox(),
+        ):SizedBox():SizedBox(),
       )
     );
   }

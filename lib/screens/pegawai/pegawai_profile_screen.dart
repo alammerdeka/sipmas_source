@@ -1,6 +1,6 @@
 part of 'pegawai_screens.dart';
 class PegawaiProfileScreen extends StatefulWidget {
-  const PegawaiProfileScreen({Key key}) : super(key: key);
+  const PegawaiProfileScreen({super.key});
 
   @override
   State<PegawaiProfileScreen> createState() => _PegawaiProfileScreenState();

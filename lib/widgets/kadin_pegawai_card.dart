@@ -28,20 +28,20 @@ class KadinPegawaiCard extends StatelessWidget {
            SizedBox(
            width: MediaQuery.of(context).size.width-150,
         child:
-        Text(pegawai.pengNama)),
+        Text(pegawai.pengNama!)),
     SizedBox(height:8),
     SizedBox(width: MediaQuery.of(context).size.width-150,
-    child: Text(pegawai.grupNama,maxLines: 3,),
+    child: Text(pegawai.grupNama!,maxLines: 3,),
 
     ),
     SizedBox(
     width: MediaQuery.of(context).size.width-150,
     child:
-    Text(pegawai.pengEmail)),
+    Text(pegawai.pengEmail!)),
     SizedBox(
     width: MediaQuery.of(context).size.width-150,
     child:
-    Text(pegawai.pengTlp)),
+    Text(pegawai.pengTlp!)),
             ],),
         ],),
 

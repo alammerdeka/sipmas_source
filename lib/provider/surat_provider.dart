@@ -33,7 +33,7 @@ class SuratProvider with ChangeNotifier {
     }
   }
 
-  Future<Surat> postValidasiKadin(String suratId, String suratStatus) async {
+  Future<Surat?> postValidasiKadin(String suratId, String suratStatus) async {
     try {
       var body = ({'suratId': suratId, 'suratStatus': suratStatus});
 
@@ -53,7 +53,7 @@ class SuratProvider with ChangeNotifier {
     }
   }
 
-  Future<Surat> postValidasiPegawai(String suratId, String suratStatus) async {
+  Future<Surat?> postValidasiPegawai(String suratId, String suratStatus) async {
     try {
       var body = ({'suratId': suratId, 'suratStatus': suratStatus});
 
@@ -70,11 +70,11 @@ class SuratProvider with ChangeNotifier {
       }
     } catch (e) {
       print(e);
-      return e;
+      return null;
     }
   }
 
-  Future<Surat> postPindah(
+  Future<Surat?> postPindah(
     String suratPengId,
     String suratJenis,
     String suratNama,
@@ -120,7 +120,7 @@ class SuratProvider with ChangeNotifier {
       print(e);
     }
   }
-  Future<Surat> postKematian(
+  Future<Surat?> postKematian(
       String suratPengId,
       String suratJenis,
       String suratNama,
@@ -160,7 +160,7 @@ class SuratProvider with ChangeNotifier {
       print(e);
     }
   }
-  Future<Surat> postBelumNikah(
+  Future<Surat?> postBelumNikah(
       String suratPengId,
       String suratJenis,
       String suratNama,

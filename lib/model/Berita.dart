@@ -1,12 +1,12 @@
 part of 'models.dart';
 class Berita {
-  String beritaId;
-  String beritaGambar;
-  String beritaJudul;
-  String beritaIsi;
-  String beritaDibuatPada;
-  String message;
-  bool status;
+  String? beritaId;
+  String? beritaGambar;
+  String? beritaJudul;
+  String? beritaIsi;
+  String? beritaDibuatPada;
+  String? message;
+  bool? status;
 
   Berita(
       {this.beritaId,

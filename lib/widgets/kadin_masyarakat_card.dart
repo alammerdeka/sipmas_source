@@ -28,20 +28,20 @@ class KadinMasyarakatCard extends StatelessWidget {
            SizedBox(
                width: MediaQuery.of(context).size.width-150,
                child:
-           Text(masyarakat.pengNama)),
+           Text(masyarakat.pengNama!)),
            SizedBox(height:8),
            SizedBox(width: MediaQuery.of(context).size.width-150,
-             child: Text(masyarakat.grupNama,maxLines: 3,),
+             child: Text(masyarakat.grupNama!,maxLines: 3,),
 
            ),
            SizedBox(
                width: MediaQuery.of(context).size.width-150,
                child:
-               Text(masyarakat.pengEmail)),
+               Text(masyarakat.pengEmail!)),
            SizedBox(
                width: MediaQuery.of(context).size.width-150,
                child:
-               Text(masyarakat.pengTlp)),
+               Text(masyarakat.pengTlp!)),
          ],),
         ],),
 

@@ -37,7 +37,7 @@ class _DataSuratMasyarakatScreenState extends State<DataSuratMasyarakatScreen> {
       );
     }
     return RefreshIndicator(
-      onRefresh: ()=>getInit(userProvider.user.pengId),
+      onRefresh: ()=>getInit(userProvider.user.pengId!),
       child: Scaffold(
         body: SafeArea(
           child: Column(

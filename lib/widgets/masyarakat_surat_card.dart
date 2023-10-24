@@ -19,12 +19,12 @@ class MasyarakatSuratCard extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  Text(surat.suratJenis),
+                  Text(surat.suratJenis!),
                   SizedBox(height: 8),
                   SizedBox(
                     width: MediaQuery.of(context).size.width - 150,
                     child: Text(
-                      surat.suratNama,
+                      surat.suratNama!,
                       maxLines: 3,
                     ),
                   ),

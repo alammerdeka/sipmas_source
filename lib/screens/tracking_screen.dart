@@ -1,6 +1,6 @@
 part of 'screens.dart';
 class TrackingScreen extends StatefulWidget {
-  const TrackingScreen({Key key}) : super(key: key);
+  const TrackingScreen({super.key});
 
   @override
   State<TrackingScreen> createState() => _TrackingScreenState();

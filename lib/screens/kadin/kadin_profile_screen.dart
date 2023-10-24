@@ -1,7 +1,7 @@
 part of 'kadin_screens.dart';
 
 class KadinProfileScreen extends StatefulWidget {
-  const KadinProfileScreen({Key key}) : super(key: key);
+  const KadinProfileScreen({super.key});
 
   @override
   State<KadinProfileScreen> createState() => _KadinProfileScreenState();
@@ -77,8 +77,8 @@ class _KadinProfileScreenState extends State<KadinProfileScreen> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                  Text(userProvider.user.pengNama, style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20)),
-                  Text(userProvider.user.grupNama!=null?userProvider.user.grupNama:''),
+                  Text(userProvider.user.pengNama!, style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20)),
+                  Text(userProvider.user.grupNama != null?userProvider.user.grupNama!:''),
                 ],),
                 GestureDetector(
                     onTap: (){
@@ -93,8 +93,8 @@ class _KadinProfileScreenState extends State<KadinProfileScreen> {
 
             ),
             SizedBox(height: 10,),
-            valueProfile('Email',userProvider.user.pengEmail,(){}),
-            valueProfile('Telepon',userProvider.user.pengTlp,(){}),
+            valueProfile('Email',userProvider.user.pengEmail!,(){}),
+            valueProfile('Telepon',userProvider.user.pengTlp!,(){}),
             valueProfile('Tempat, Tanggal Lahir','${userProvider.user.pengTempat},${userProvider.user.pengTanggal}',(){}),
             // valueProfile(userProvider.user.pengJenisKelamin,(){}),
             // valueProfile(userProvider.user.pengStatusKawin,(){}),
@@ -114,7 +114,7 @@ class _KadinProfileScreenState extends State<KadinProfileScreen> {
 
 
     return RefreshIndicator(
-      onRefresh: ()=>getInit(userProvider.user.pengId),
+      onRefresh: ()=>getInit(userProvider.user.pengId!),
       child: Scaffold(
         body: ListView(
           children: [header()],

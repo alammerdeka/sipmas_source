@@ -23,18 +23,18 @@ class AuthProvider with ChangeNotifier {
 
 
 
-  Future<User> registrasiUser(String pengNama,
-      String pengNik,
-      String pengTempat,
-      String pengTanggal,
-      String pengJenisKelamin,
-      String pengAgama,
-      String pengStatusKawin,
-      String pengAlamat,
-      String pengTlp,
-      String pengInstansi,
-      String pengEmail,
-      String pengPass,
+  Future<User?> registrasiUser(String? pengNama,
+      String? pengNik,
+      String? pengTempat,
+      String? pengTanggal,
+      String? pengJenisKelamin,
+      String? pengAgama,
+      String? pengStatusKawin,
+      String? pengAlamat,
+      String? pengTlp,
+      String? pengInstansi,
+      String? pengEmail,
+      String? pengPass,
      ) async {
     try {
       var body = ({
@@ -71,21 +71,21 @@ class AuthProvider with ChangeNotifier {
     }
   }
 
-  Future<User> registPegawai(String pengNama,
-      String pengNik,
-      String pengTempat,
-      String pengTanggal,
-      String pengJenisKelamin,
-      String pengAgama,
-      String pengStatusKawin,
-      String pengAlamat,
-      String pengTlp,
-      String pengInstansi,
-      String pengEmail,
-      String pengPass,
-      String password_confirm,
-      String grupId,
-      String pengAktif,
+  Future<User?> registPegawai(String? pengNama,
+      String? pengNik,
+      String? pengTempat,
+      String? pengTanggal,
+      String? pengJenisKelamin,
+      String? pengAgama,
+      String? pengStatusKawin,
+      String? pengAlamat,
+      String? pengTlp,
+      String? pengInstansi,
+      String? pengEmail,
+      String? pengPass,
+      String? password_confirm,
+      String? grupId,
+      String? pengAktif,
       ) async {
     try {
       var body = ({
@@ -124,23 +124,23 @@ class AuthProvider with ChangeNotifier {
       return null;
     }
   }
-  Future<User> editPegawai(
-      String pengId,
-      String pengNama,
-      String pengNik,
-      String pengTempat,
-      String pengTanggal,
-      String pengJenisKelamin,
-      String pengAgama,
-      String pengStatusKawin,
-      String pengAlamat,
-      String pengTlp,
-      String pengInstansi,
-      String pengEmail,
-      String pengPass,
-      String password_confirm,
-      String grupId,
-      String pengAktif,
+  Future<User?> editPegawai(
+      String? pengId,
+      String? pengNama,
+      String? pengNik,
+      String? pengTempat,
+      String? pengTanggal,
+      String? pengJenisKelamin,
+      String? pengAgama,
+      String? pengStatusKawin,
+      String? pengAlamat,
+      String? pengTlp,
+      String? pengInstansi,
+      String? pengEmail,
+      String? pengPass,
+      String? password_confirm,
+      String? grupId,
+      String? pengAktif,
       ) async {
     try {
       var body = ({
@@ -181,7 +181,7 @@ class AuthProvider with ChangeNotifier {
     }
   }
 
-  Future<User> userLogin(String identity, String password) async {
+  Future<User?> userLogin(String identity, String password) async {
     try {
       var body = ({
         'identity': identity,
@@ -205,7 +205,7 @@ class AuthProvider with ChangeNotifier {
     }
   }
 
-  Future<User> deleteUser(String pengId) async {
+  Future<User?> deleteUser(String pengId) async {
     try {
       var body = ({
         'pengId': pengId,

@@ -25,9 +25,9 @@ class _DetailMasyarakatScreenState extends State<DetailMasyarakatScreen> {
       return Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(widget.masyarakat.pengNama,
+          Text(widget.masyarakat.pengNama!,
               style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
-          Text(widget.masyarakat.pengEmail),
+          Text(widget.masyarakat.pengEmail!),
           SizedBox(height: 20,),
           Text('NIK : ${widget.masyarakat.pengNik}'),
           Text('Tempat & Tanggal Lahir : ${widget.masyarakat.pengTempat}, ${widget.masyarakat.pengTanggal}'),
@@ -53,9 +53,9 @@ class _DetailMasyarakatScreenState extends State<DetailMasyarakatScreen> {
     ),
     bottomNavigationBar: Padding(
       padding: const EdgeInsets.all(8.0),
-      child: longButtons(100, 'Hubungi', (){
+      child: CupertinoButton(child: Text('Hubungi'),onPressed: (){
         launchWhatsApp('${widget.masyarakat.pengTlp}');
-      }),
+      },)
     ),
     );
   }

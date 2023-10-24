@@ -1,6 +1,6 @@
 part of 'kadin_screens.dart';
 class DataSuratScreen extends StatefulWidget {
-  const DataSuratScreen({Key key}) : super(key: key);
+  const DataSuratScreen({super.key});
 
   @override
   State<DataSuratScreen> createState() => _DataSuratScreenState();

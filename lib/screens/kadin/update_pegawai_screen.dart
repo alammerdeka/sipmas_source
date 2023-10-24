@@ -20,8 +20,8 @@ class _UpdatePegawaiScreenState extends State<UpdatePegawaiScreen> {
   TextEditingController instansiController = TextEditingController();
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
-  DateTime _dateTime;
-  String _textDate;
+  DateTime? _dateTime;
+  String? _textDate;
   String selectJenkel = "";
   String selectAgama = "";
   String selectKawin = "";
@@ -36,7 +36,7 @@ class _UpdatePegawaiScreenState extends State<UpdatePegawaiScreen> {
 
   var myFormat = DateFormat('d-MM-yyyy');
   Future<Null> selectedTime(BuildContext context) async {
-    final DateTime picked = await showDatePicker(
+    final DateTime? picked = await showDatePicker(
         context: context,
         helpText: 'Tanggal Lahir',
         initialDate: DateTime.now(),
@@ -82,7 +82,7 @@ class _UpdatePegawaiScreenState extends State<UpdatePegawaiScreen> {
                 child: TextFormField(
                   controller: namaController,
                   keyboardType: TextInputType.text,
-                  decoration: fieldPrefIcon(Icon(Icons.person), widget.pegawai.pengNama!=null?widget.pegawai.pengNama:''),
+                  decoration: fieldPrefIcon(Icon(Icons.person), widget.pegawai.pengNama!=null?widget.pegawai.pengNama!:''),
                 ),
                 decoration: BoxDecoration(
                   color: Colors.grey.shade100,
@@ -100,7 +100,7 @@ class _UpdatePegawaiScreenState extends State<UpdatePegawaiScreen> {
                 child: TextFormField(
                   controller: nikController,
                   keyboardType: TextInputType.number,
-                  decoration: fieldPrefIcon(Icon(Icons.workspaces), widget.pegawai.pengNik!=null?widget.pegawai.pengNik:''),
+                  decoration: fieldPrefIcon(Icon(Icons.workspaces), widget.pegawai.pengNik!=null?widget.pegawai.pengNik!:''),
                 ),
                 decoration: BoxDecoration(
                   color: Colors.grey.shade100,
@@ -119,7 +119,7 @@ class _UpdatePegawaiScreenState extends State<UpdatePegawaiScreen> {
                   controller: tempatController,
                   keyboardType: TextInputType.text,
                   decoration:
-                  fieldPrefIcon(Icon(Icons.water_damage_outlined),  widget.pegawai.pengTempat!=null?widget.pegawai.pengTempat:''),
+                  fieldPrefIcon(Icon(Icons.water_damage_outlined),  widget.pegawai.pengTempat!=null?widget.pegawai.pengTempat!:''),
                 ),
                 decoration: BoxDecoration(
                   color: Colors.grey.shade100,
@@ -147,7 +147,7 @@ class _UpdatePegawaiScreenState extends State<UpdatePegawaiScreen> {
                             BorderSide(width: 0, style: BorderStyle.none)),
                         labelText: _textDate == null
                             ? widget.pegawai.pengTanggal!=null?widget.pegawai.pengTanggal:'  Pilih Tanggal'
-                            : '  ${myFormat.format(_dateTime)}',
+                            : '  ${myFormat.format(_dateTime!)}',
                         labelStyle: _textDate == null
                             ? TextStyle(color: Colors.grey, fontSize: 14)
                             : TextStyle(
@@ -189,7 +189,7 @@ class _UpdatePegawaiScreenState extends State<UpdatePegawaiScreen> {
                   },
                   onSaved: (value){
                     setState(() {
-                      selectJenkel = value;
+                      selectJenkel = value!;
                     });
                   },
                 ),
@@ -214,7 +214,7 @@ class _UpdatePegawaiScreenState extends State<UpdatePegawaiScreen> {
                   labelText: widget.pegawai.pengAgama!=null?widget.pegawai.pengAgama:'Pilih',
                   items: listAgama,
                   onChanged: (value) => selectAgama =value,
-                  onSaved: (value) => selectAgama =value,
+                  onSaved: (value) => selectAgama =value!,
                 ),
               ), //agama
               Padding(
@@ -237,7 +237,7 @@ class _UpdatePegawaiScreenState extends State<UpdatePegawaiScreen> {
                   labelText: widget.pegawai.pengStatusKawin!=null?widget.pegawai.pengStatusKawin:'Pilih',
                   items: listKawin,
                   onChanged: (value) => selectKawin = value,
-                  onSaved: (value) => selectKawin = value,
+                  onSaved: (value) => selectKawin = value!,
                 ),
               ), //status kawin
               Padding(
@@ -253,7 +253,7 @@ class _UpdatePegawaiScreenState extends State<UpdatePegawaiScreen> {
                     keyboardType: TextInputType.text,
                     obscureText: false,
                     decoration:
-                    fieldPrefIcon(Icon(Icons.location_on_sharp), widget.pegawai.pengAlamat!=null?widget.pegawai.pengAlamat:'Pilih')),
+                    fieldPrefIcon(Icon(Icons.location_on_sharp), widget.pegawai.pengAlamat!=null?widget.pegawai.pengAlamat!:'Pilih')),
                 decoration: BoxDecoration(
                   color: Colors.grey.shade100,
                   borderRadius: BorderRadius.circular(10),
@@ -271,7 +271,7 @@ class _UpdatePegawaiScreenState extends State<UpdatePegawaiScreen> {
                     controller: telpController,
                     keyboardType: TextInputType.number,
                     obscureText: false,
-                    decoration: fieldPrefIcon(Icon(Icons.phone), widget.pegawai.pengTlp!=null?widget.pegawai.pengTlp:'Pilih')),
+                    decoration: fieldPrefIcon(Icon(Icons.phone), widget.pegawai.pengTlp!=null?widget.pegawai.pengTlp!:'Pilih')),
                 decoration: BoxDecoration(
                   color: Colors.grey.shade100,
                   borderRadius: BorderRadius.circular(10),
@@ -297,7 +297,7 @@ class _UpdatePegawaiScreenState extends State<UpdatePegawaiScreen> {
                   labelText: widget.pegawai.pengInstansi!=null?widget.pegawai.pengInstansi:'Pilih',
                   items: listInstansi,
                   onChanged: (value) => selectInstansi = value,
-                  onSaved: (value) => selectInstansi = value,
+                  onSaved: (value) => selectInstansi = value!,
                 ),
               ),
               Padding(
@@ -313,7 +313,7 @@ class _UpdatePegawaiScreenState extends State<UpdatePegawaiScreen> {
                     keyboardType: TextInputType.text,
                     obscureText: false,
                     enabled: false,
-                    decoration: fieldPrefIcon(Icon(Icons.email), widget.pegawai.pengEmail!=null?widget.pegawai.pengEmail:'')),
+                    decoration: fieldPrefIcon(Icon(Icons.email), widget.pegawai.pengEmail!=null?widget.pegawai.pengEmail!:'')),
                 decoration: BoxDecoration(
                   color: Colors.grey.shade100,
                   borderRadius: BorderRadius.circular(10),
@@ -331,7 +331,7 @@ class _UpdatePegawaiScreenState extends State<UpdatePegawaiScreen> {
                     controller: passwordController,
                     keyboardType: TextInputType.text,
                     obscureText: true,
-                    decoration: fieldPrefIcon(Icon(Icons.lock), widget.pegawai.pengPass!=null?widget.pegawai.pengPass:'')),
+                    decoration: fieldPrefIcon(Icon(Icons.lock), widget.pegawai.pengPass!=null?widget.pegawai.pengPass!:'')),
                 decoration: BoxDecoration(
                   color: Colors.grey.shade100,
                   borderRadius: BorderRadius.circular(10),
@@ -340,55 +340,56 @@ class _UpdatePegawaiScreenState extends State<UpdatePegawaiScreen> {
               SizedBox(
                 height: 20,
               ),
-              _isLoading?longButtons(MediaQuery.of(context).size.width,'Ubah', () async {
+              _isLoading?CupertinoButton(child: Text('Ubah Data Pegawai'), onPressed: ()async{
                 setState(() {
                   _isLoading = false;
                 });
-                  User user = await authProvider.editPegawai(
+                User? user = await authProvider.editPegawai(
                     widget.pegawai.pengId,
-                      namaController.text.isEmpty?widget.pegawai.pengNama:namaController.text,
-                      nikController.text.isEmpty?widget.pegawai.pengNik:nikController.text,
-                      tempatController.text.isEmpty?widget.pegawai.pengTempat:tempatController,
-                      _textDate==null?widget.pegawai.pengTanggal:_textDate,
-                      selectJenkel.isEmpty?widget.pegawai.pengJenisKelamin:selectJenkel,
-                      selectAgama.isEmpty?widget.pegawai.pengAgama:selectAgama,
-                      selectKawin.isEmpty?widget.pegawai.pengStatusKawin:selectKawin,
-                      alamatController.text.isEmpty?widget.pegawai.pengAlamat:alamatController,
-                      telpController.text.isEmpty?widget.pegawai.pengTlp:telpController,
-                      selectInstansi.isEmpty?widget.pegawai.pengInstansi:selectInstansi,
-                      widget.pegawai.pengEmail,
-                      passwordController.text.isEmpty?'':'',
-                      passwordController.text.isEmpty?'':'',
-                  '5',
-                  '1');
-                  if (user.status == false) {
-                    setState(() {
-                      _isLoading = true;
-                    });
-                    print(user.pengPass);
-                    showError(user.pengPass);
-                  } else {
-                    showSuccess('Berhasil ubah pegawai');
-
-                    getInit();
-
-                  }
-              }):Container(height: 50,width:50,child: Center(child: CircularProgressIndicator(),),),
-
-              longButtonsGrey(100, 'Hapus Pegawai', ()async{
-                User user = await authProvider.deleteUser(widget.pegawai.pengId);
-                if (user.status == false) {
+                    namaController.text.isEmpty?widget.pegawai.pengNama:namaController.text,
+                    nikController.text.isEmpty?widget.pegawai.pengNik:nikController.text,
+                    tempatController.text.isEmpty?widget.pegawai.pengTempat!:tempatController.text,
+                    _textDate==null?widget.pegawai.pengTanggal:_textDate,
+                    selectJenkel.isEmpty?widget.pegawai.pengJenisKelamin:selectJenkel,
+                    selectAgama.isEmpty?widget.pegawai.pengAgama:selectAgama,
+                    selectKawin.isEmpty?widget.pegawai.pengStatusKawin:selectKawin,
+                    alamatController.text.isEmpty?widget.pegawai.pengAlamat:alamatController.text,
+                    telpController.text.isEmpty?widget.pegawai.pengTlp:telpController.text,
+                    selectInstansi.isEmpty?widget.pegawai.pengInstansi:selectInstansi,
+                    widget.pegawai.pengEmail,
+                    passwordController.text.isEmpty?'':'',
+                    passwordController.text.isEmpty?'':'',
+                    '5',
+                    '1');
+                if (user!.status == false) {
                   setState(() {
                     _isLoading = true;
                   });
-                  print(user.message);
-                  showError(user.message);
+                  print(user!.pengPass);
+                  showError(user.pengPass!);
+                } else {
+                  showSuccess('Berhasil ubah pegawai');
+
+                  getInit();
+
+                }
+              }):Container(height: 50,width:50,child: Center(child: CircularProgressIndicator(),),),
+
+              CupertinoButton(child: Text('Hapus'), onPressed: ()async{
+                User? user = await authProvider.deleteUser(widget.pegawai.pengId!);
+                if (user!.status == false) {
+                  setState(() {
+                    _isLoading = true;
+                  });
+                  print(user.message!);
+                  showError(user.message!);
                 } else {
                   showSuccess('Berhasil hapus pegawai');
                   getInit();
 
                 }
               }),
+
               SizedBox(height: 20,),
             ],
           ),

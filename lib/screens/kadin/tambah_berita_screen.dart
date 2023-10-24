@@ -9,8 +9,8 @@ class _TambahBeritaScreenState extends State<TambahBeritaScreen> {
   TextEditingController isiController = TextEditingController();
   final formKey = GlobalKey<FormState>();
   bool _isUploading=false;
-  File uploadimage;
-  File imageFile;
+  File? uploadimage;
+  File? imageFile;
   final picker = ImagePicker();
   List<int> showw=[];
 
@@ -26,7 +26,7 @@ class _TambahBeritaScreenState extends State<TambahBeritaScreen> {
     var choosedimage = await picker.getImage(source: ImageSource.gallery);
     //set source: ImageSource.camera to get image from camera
     setState(() {
-      uploadimage = File(choosedimage.path);
+      uploadimage = File(choosedimage!.path);
 
     });
   }
@@ -159,14 +159,14 @@ class _TambahBeritaScreenState extends State<TambahBeritaScreen> {
                         child:
                         ClipRRect(
                             borderRadius:BorderRadius.circular(10),
-                            child: Image.file(uploadimage,width: 100,height: 100) //
+                            child: Image.file(uploadimage!,width: 100,height: 100) //
                         ),
                       ))),
 
 
               uploadimage==null?longButtonsGrey(100, 'Pilih Gambar', (){chooseImage();}):
               longButtons(100, 'Simpan Berita', (){  addProduct(
-                judulController.text,isiController.text, uploadimage );}),
+                judulController.text,isiController.text, uploadimage! );}),
 
 
             ],

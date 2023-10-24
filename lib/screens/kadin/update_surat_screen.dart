@@ -205,17 +205,17 @@ class _UpdateSuratScreenState extends State<UpdateSuratScreen> {
                               ? SizedBox()
                               : widget.surat.suratStatus == '3'
                                   ? SizedBox()
-                                  : longButtonsGrey(100, 'Tolak', () async {
-                                      Surat valSurat = await suratProvider
-                                          .postValidasiPegawai(
-                                              widget.surat.suratId, '3');
-                                      if (valSurat.status = true) {
-                                        showSuccess(valSurat.message);
-                                        getInit();
-                                      } else {
-                                        showError(valSurat.message);
-                                      }
-                                    }))
+                                  : CupertinoButton(child: Text('Tolak'),onPressed: ()async{
+                        Surat? valSurat = await suratProvider
+                            .postValidasiPegawai(
+                            widget.surat.suratId!, '3');
+                        if (valSurat!.status = true) {
+                          showSuccess(valSurat.message!);
+                          getInit();
+                        } else {
+                          showError(valSurat.message!);
+                        }
+                      },))
                   : SizedBox(
                       width: 10,
                     ),
@@ -227,44 +227,43 @@ class _UpdateSuratScreenState extends State<UpdateSuratScreen> {
                   flex: 1,
                   child: userProvider.user.grupNama == 'Pegawai' &&
                           widget.surat.suratStatus == '1'
-                      ? longButtons(100, 'Validasi Pegawai', () async {
-                          print(widget.surat.suratId);
-                          print('2');
-                          Surat valSurat = await suratProvider
-                              .postValidasiPegawai(widget.surat.suratId, '2');
-                          if (valSurat.status = true) {
-                            showSuccess(valSurat.message);
-                            getInit();
-                          } else {
-                            showError(valSurat.message);
-                          }
-                        })
+                      ? CupertinoButton(child: Text('Validasi Pegawai'), onPressed: ()async{
+                    print(widget.surat.suratId);
+                    print('2');
+                    Surat? valSurat = await suratProvider
+                        .postValidasiPegawai(widget.surat.suratId!, '2');
+                    if (valSurat!.status = true) {
+                      showSuccess(valSurat.message!);
+                      getInit();
+                    } else {
+                      showError(valSurat.message!);
+                    }
+                  })
                       : userProvider.user.grupNama == 'Kepala Dinas' &&
                               widget.surat.suratStatus == '2'
-                          ? longButtons(100, 'Validasi Kepala Dinas', () async {
-                              Surat valSurat = await suratProvider
-                                  .postValidasiKadin(widget.surat.suratId, '4');
-                              if (valSurat.status = true) {
-                                showSuccess(valSurat.message);
-                                getInit();
-                              } else {
-                                showError(valSurat.message);
-                              }
-                            })
+                          ?CupertinoButton(child: Text('Validasi Kepala Dinas'), onPressed: ()async{
+                    Surat? valSurat = await suratProvider
+                        .postValidasiKadin(widget.surat.suratId!, '4');
+                    if (valSurat!.status = true) {
+                      showSuccess(valSurat.message!);
+                      getInit();
+                    } else {
+                      showError(valSurat.message!);
+                    }
+                  })
                           : widget.surat.suratStatus == '4' &&
                                       userProvider.user.grupNama ==
                                           'Masyarakat' ||
                       widget.surat.suratStatus == '4' &&  userProvider.user.grupNama ==
                                       'Kepala Dinas' ||
                       widget.surat.suratStatus == '4' && userProvider.user.grupNama == 'Pegawai'
-                              ? longButtons(100, 'Download', ()async{
-
-                                String hasil = await widget.surat.suratJenis=='Surat Keterangan Pindah'?'surat-pindah':widget.surat.suratJenis=='Surat Kematian'?'surat-kematian':'surat-belum-menikah';
-                                setState(() {
-                                  urlFinal = hasil;
-                                });
-                                print(urlFinal);
-                    navigateTo(urlFinal,widget.surat.suratId);
+                              ?CupertinoButton(child: Text('Download'), onPressed: ()async{
+                    String hasil = await widget.surat.suratJenis=='Surat Keterangan Pindah'?'surat-pindah':widget.surat.suratJenis=='Surat Kematian'?'surat-kematian':'surat-belum-menikah';
+                    setState(() {
+                      urlFinal = hasil;
+                    });
+                    print(urlFinal);
+                    navigateTo(urlFinal,widget.surat.suratId!);
                   })
                               : SizedBox())
             ],
@@ -296,12 +295,12 @@ class _UpdateSuratScreenState extends State<UpdateSuratScreen> {
 
 class _RightChild extends StatelessWidget {
   const _RightChild({
-    Key key,
-    this.asset,
-    this.title,
-    this.message,
+    super.key,
+    required this.asset,
+    required this.title,
+    required this.message,
     this.disabled = false,
-  }) : super(key: key);
+  });
 
   final String asset;
   final String title;
@@ -319,27 +318,33 @@ class _RightChild extends StatelessWidget {
             opacity: disabled ? 0.5 : 1,
           ),
           SizedBox(width: 16),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisSize: MainAxisSize.min,
-            children: <Widget>[
-              Text(
-                title,
-                style: TextStyle(
-                  color: disabled ? Color(0xFFBABABA) : Color(0xFF636564),
-                  fontSize: 18,
-                  fontWeight: FontWeight.w500,
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisSize: MainAxisSize.min,
+              children: <Widget>[
+                Expanded(
+                  child: Text(
+                    title,
+                    style: TextStyle(
+                      color: disabled ? Color(0xFFBABABA) : Color(0xFF636564),
+                      fontSize: 18,
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ),
                 ),
-              ),
-              SizedBox(height: 6),
-              Text(
-                message,
-                style: TextStyle(
-                  color: disabled ? Color(0xFFD5D5D5) : Color(0xFF636564),
-                  fontSize: 16,
+                SizedBox(height: 6),
+                Expanded(
+                  child: Text(
+                    message,
+                    style: TextStyle(
+                      color: disabled ? Color(0xFFD5D5D5) : Color(0xFF636564),
+                      fontSize: 16,
+                    ),
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ],
       ),

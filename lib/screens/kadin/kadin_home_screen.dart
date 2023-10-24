@@ -1,7 +1,7 @@
 part of 'kadin_screens.dart';
 
 class KadinHomeScreen extends StatefulWidget {
-  const KadinHomeScreen({Key key}) : super(key: key);
+  const KadinHomeScreen({super.key});
 
   @override
   State<KadinHomeScreen> createState() => _KadinHomeScreenState();
@@ -34,10 +34,10 @@ class _KadinHomeScreenState extends State<KadinHomeScreen> {
                   'Hallo, ',
                   style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
                 ),
-                SizedBox(
-                  width: 250,
+                Expanded(
+
                   child: Text(
-                    userProvider.user.pengNama,
+                    userProvider.user.pengNama!,
                     style: TextStyle(fontSize: 30),
                   ),
                 ),

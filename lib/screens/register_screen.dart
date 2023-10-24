@@ -1,7 +1,7 @@
 part of 'screens.dart';
 
 class RegisterScreen extends StatefulWidget {
-  const RegisterScreen({Key key}) : super(key: key);
+  const RegisterScreen({super.key});
 
   @override
   State<RegisterScreen> createState() => _RegisterScreenState();
@@ -19,8 +19,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
   TextEditingController instansiController = TextEditingController();
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
-  DateTime _dateTime;
-  String _textDate;
+  DateTime? _dateTime;
+  String? _textDate;
   String selectJenkel = "";
   String selectAgama = "";
   String selectKawin = "";
@@ -30,7 +30,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
   var myFormat = DateFormat('d-MM-yyyy');
   Future<Null> selectedTime(BuildContext context) async {
-    final DateTime picked = await showDatePicker(
+    final DateTime? picked = await showDatePicker(
         context: context,
         helpText: 'Tanggal Lahir',
         initialDate: DateTime.now(),
@@ -141,7 +141,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                 BorderSide(width: 0, style: BorderStyle.none)),
                         labelText: _textDate == null
                             ? '  Pilih Tanggal'
-                            : '  ${myFormat.format(_dateTime)}',
+                            : '  ${myFormat.format(_dateTime!)}',
                         labelStyle: _textDate == null
                             ? TextStyle(color: Colors.grey, fontSize: 14)
                             : TextStyle(
@@ -183,7 +183,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   },
                   onSaved: (value){
                     setState(() {
-                      selectJenkel = value;
+                      selectJenkel = value!;
                     });
                   },
                 ),
@@ -208,7 +208,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   labelText: 'Shape',
                   items: listAgama,
                   onChanged: (value)  => selectAgama =value,
-                  onSaved: (value)  => selectAgama =value,
+                  onSaved: (value)  => selectAgama =value!,
                 ),
               ), //agama
               Padding(
@@ -231,7 +231,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   labelText: 'Shape',
                   items: listKawin,
                   onChanged: (value) =>  selectKawin = value,
-                  onSaved: (value) =>  selectKawin = value,
+                  onSaved: (value) =>  selectKawin = value!,
                 ),
               ), //status kawin
               Padding(
@@ -291,7 +291,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   labelText: 'Shape',
                   items: listInstansi,
                   onChanged: (value) => selectInstansi = value,
-                  onSaved: (value) => selectInstansi = value,
+                  onSaved: (value) => selectInstansi = value!,
                 ),
               ),
               Padding(
@@ -333,7 +333,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
               SizedBox(
                 height: 20,
               ),
-              _isLoading?longButtons(MediaQuery.of(context).size.width,'Daftar', () async {
+              _isLoading?CupertinoButton(child: Text('Daftar'), onPressed: ()async{
                 setState(() {
                   _isLoading = false;
                 });
@@ -367,7 +367,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   });
                 } else {
 
-                  User user = await authProvider.registrasiUser(
+                  User? user = await authProvider.registrasiUser(
                       namaController.text,
                       nikController.text,
                       tempatController.text,
@@ -380,12 +380,12 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       selectInstansi,
                       emailController.text,
                       passwordController.text);
-                  if (user.status == false) {
+                  if (user!.status == false) {
                     setState(() {
                       _isLoading = true;
                     });
-                    print(user.pengPass);
-                    showError(user.pengPass);
+                    print(user!.pengPass);
+                    showError(user.pengPass!);
                   } else {
                     showSuccess('Berhasil Daftar, Silahkan Login');
                     print('MASHOK');
@@ -393,8 +393,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
                   }
                 }
-                ;
-              }):Container(height: 50,width:50,child: Center(child: CircularProgressIndicator(),),),
+              },):Container(height: 50,width:50,child: Center(child: CircularProgressIndicator(),),),
               SizedBox(height: 20,),
 
             ],

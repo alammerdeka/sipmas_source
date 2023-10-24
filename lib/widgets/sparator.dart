@@ -1,7 +1,6 @@
 part of 'widgets.dart';
 class MySeparator extends StatelessWidget {
-  const MySeparator({Key key, this.height = 1, this.color = Colors.black})
-      : super(key: key);
+  const MySeparator({this.height = 1, this.color = Colors.black});
   final double height;
   final Color color;
 

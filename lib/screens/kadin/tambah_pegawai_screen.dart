@@ -20,8 +20,8 @@ class _TambahPegawaiScreenState extends State<TambahPegawaiScreen> {
   TextEditingController instansiController = TextEditingController();
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
-  DateTime _dateTime;
-  String _textDate;
+  DateTime? _dateTime;
+  String? _textDate;
   String selectJenkel = "";
   String selectAgama = "";
   String selectKawin = "";
@@ -36,7 +36,7 @@ class _TambahPegawaiScreenState extends State<TambahPegawaiScreen> {
 
   var myFormat = DateFormat('d-MM-yyyy');
   Future<Null> selectedTime(BuildContext context) async {
-    final DateTime picked = await showDatePicker(
+    final DateTime? picked = await showDatePicker(
         context: context,
         helpText: 'Tanggal Lahir',
         initialDate: DateTime.now(),
@@ -147,7 +147,7 @@ class _TambahPegawaiScreenState extends State<TambahPegawaiScreen> {
                             BorderSide(width: 0, style: BorderStyle.none)),
                         labelText: _textDate == null
                             ? '  Pilih Tanggal'
-                            : '  ${myFormat.format(_dateTime)}',
+                            : '  ${myFormat.format(_dateTime!)}',
                         labelStyle: _textDate == null
                             ? TextStyle(color: Colors.grey, fontSize: 14)
                             : TextStyle(
@@ -189,7 +189,7 @@ class _TambahPegawaiScreenState extends State<TambahPegawaiScreen> {
                   },
                   onSaved: (value){
                     setState(() {
-                      selectJenkel = value;
+                      selectJenkel = value!;
                     });
                   },
                 ),
@@ -214,7 +214,7 @@ class _TambahPegawaiScreenState extends State<TambahPegawaiScreen> {
                   labelText: 'Shape',
                   items: listAgama,
                   onChanged: (value) => selectAgama =value,
-                  onSaved: (value) => selectAgama =value,
+                  onSaved: (value) => selectAgama =value!,
                 ),
               ), //agama
               Padding(
@@ -237,7 +237,7 @@ class _TambahPegawaiScreenState extends State<TambahPegawaiScreen> {
                   labelText: 'Shape',
                   items: listKawin,
                   onChanged: (value) => selectKawin = value,
-                  onSaved: (value) => selectKawin = value,
+                  onSaved: (value) => selectKawin = value!,
                 ),
               ), //status kawin
               Padding(
@@ -297,7 +297,7 @@ class _TambahPegawaiScreenState extends State<TambahPegawaiScreen> {
                   labelText: 'Shape',
                   items: listInstansi,
                   onChanged: (value) => selectInstansi = value,
-                  onSaved: (value) => selectInstansi = value,
+                  onSaved: (value) => selectInstansi = value!,
                 ),
               ),
               Padding(
@@ -339,7 +339,7 @@ class _TambahPegawaiScreenState extends State<TambahPegawaiScreen> {
               SizedBox(
                 height: 20,
               ),
-              _isLoading?longButtons(MediaQuery.of(context).size.width,'Tambah Pegawai', () async {
+              _isLoading?CupertinoButton(child: Text('Tambah Pegawai'), onPressed: ()async{
                 setState(() {
                   _isLoading = false;
                 });
@@ -373,7 +373,7 @@ class _TambahPegawaiScreenState extends State<TambahPegawaiScreen> {
                   });
                 } else {
 
-                  User user = await authProvider.registPegawai(
+                  User? user = await authProvider.registPegawai(
                       namaController.text,
                       nikController.text,
                       tempatController.text,
@@ -386,15 +386,15 @@ class _TambahPegawaiScreenState extends State<TambahPegawaiScreen> {
                       selectInstansi,
                       emailController.text,
                       passwordController.text,
-                  passwordController.text,
-                  '5',
-                  '1');
-                  if (user.status == false) {
+                      passwordController.text,
+                      '5',
+                      '1');
+                  if (user!.status == false) {
                     setState(() {
                       _isLoading = true;
                     });
-                    print(user.pengPass);
-                    showError(user.pengPass);
+                    print(user!.pengPass);
+                    showError(user.pengPass!);
                   } else {
                     showSuccess('Berhasil menambah pegawain');
 
@@ -402,7 +402,6 @@ class _TambahPegawaiScreenState extends State<TambahPegawaiScreen> {
 
                   }
                 }
-                ;
               }):Container(height: 50,width:50,child: Center(child: CircularProgressIndicator(),),),
               SizedBox(height: 20,),
 

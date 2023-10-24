@@ -18,11 +18,10 @@ InputDecoration fieldCustom( String hintText) {
           borderSide: BorderSide(width: 0, style: BorderStyle.none)));
 }
 
-MaterialButton longButtons(double widthCustom,String title, Function fun,
-    {Color textColor: Colors.white}) {
-  return MaterialButton(
-    onPressed: fun,
-    textColor: textColor,
+CupertinoButton longButtons(double widthCustom,String title, Function fun,
+    {Color textColor = Colors.white}) {
+  return CupertinoButton(
+    onPressed: fun(),
     color: Colors.blue,
     child: SizedBox(
       child: Text(
@@ -30,17 +29,14 @@ MaterialButton longButtons(double widthCustom,String title, Function fun,
         textAlign: TextAlign.center,
       ),
     ),
-    height: 45,
-    minWidth: widthCustom,
-    shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.all(Radius.circular(10))),
+
   );
 }
 
 MaterialButton longButtonsGrey(double widthCustom,String title, Function fun,
-    {Color textColor: Colors.white}) {
+    {Color textColor = Colors.white}) {
   return MaterialButton(
-    onPressed: fun,
+    onPressed: fun(),
     textColor: textColor,
     color: Colors.grey,
     child: SizedBox(
@@ -57,9 +53,9 @@ MaterialButton longButtonsGrey(double widthCustom,String title, Function fun,
 }
 
 MaterialButton longButtonsSecondary(String title, Function fun,
-    {Color textColor: Colors.white}) {
+    {Color textColor= Colors.white}) {
   return MaterialButton(
-    onPressed: fun,
+    onPressed: fun(),
     textColor: textColor,
     color: Colors.redAccent,
     child: SizedBox(

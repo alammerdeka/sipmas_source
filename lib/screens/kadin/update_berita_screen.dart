@@ -13,8 +13,8 @@ class _UpdateBeritaScreenState extends State<UpdateBeritaScreen> {
   TextEditingController isiController = TextEditingController();
   final formKey = GlobalKey<FormState>();
   bool _isUploading = false;
-  File uploadimage;
-  File imageFile;
+  File? uploadimage;
+  File? imageFile;
   final picker = ImagePicker();
   List<int> showw = [];
 
@@ -27,7 +27,7 @@ class _UpdateBeritaScreenState extends State<UpdateBeritaScreen> {
     var choosedimage = await picker.getImage(source: ImageSource.gallery);
     //set source: ImageSource.camera to get image from camera
     setState(() {
-      uploadimage = File(choosedimage.path);
+      uploadimage = File(choosedimage!.path);
     });
   }
 
@@ -168,17 +168,17 @@ class _UpdateBeritaScreenState extends State<UpdateBeritaScreen> {
                             height: MediaQuery.of(context).size.height / 2,
                             child: ClipRRect(
                                 borderRadius: BorderRadius.circular(10),
-                                child: Image.file(uploadimage) //
+                                child: Image.file(uploadimage!) //
                                 ),
                           ))),
 
               uploadimage==null?longButtonsGrey(100, 'Pilih Gambar', (){chooseImage();}):
               longButtons(100, 'Simpan Berita', (){  addProduct(
-                  widget.berita.beritaId,
+                  widget.berita.beritaId!,
                   judulController.text.isEmpty
-                      ? widget.berita.beritaJudul
+                      ? widget.berita.beritaJudul!
                       : judulController.text,
-                  isiController.text.isEmpty?widget.berita.beritaIsi:isiController.text,uploadimage,);}),
+                  isiController.text.isEmpty?widget.berita.beritaIsi!:isiController.text,uploadimage!,);}),
             ],
           ),
         ),
@@ -186,11 +186,11 @@ class _UpdateBeritaScreenState extends State<UpdateBeritaScreen> {
       bottomNavigationBar: FloatingActionButton(
         backgroundColor: Colors.redAccent,
         onPressed: ()async{
-         Berita ber = await beritaProvider.deleteBerita(widget.berita.beritaId);
-         if(ber.status=false){
-           showError(ber.message);
+         Berita? ber = await beritaProvider.deleteBerita(widget.berita.beritaId!);
+         if(ber!.status=false){
+           showError(ber.message!);
          }else{
-           showSuccess(ber.message);
+           showSuccess(ber.message!);
            getInit();
          }
         },

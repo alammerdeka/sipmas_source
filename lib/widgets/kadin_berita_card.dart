@@ -22,7 +22,7 @@ class KadinBeritaCard extends StatelessWidget {
               flex: 1,
               child: ClipRRect(
                   borderRadius: BorderRadius.circular(10),
-                  child: Image.network(berita.beritaGambar,width: 100,height: 100,fit: BoxFit.cover,)),
+                  child: Image.network(berita.beritaGambar!,width: 100,height: 100,fit: BoxFit.cover,)),
             ),
             SizedBox(width: 10,),
             Expanded(
@@ -31,9 +31,9 @@ class KadinBeritaCard extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  SizedBox(width: MediaQuery.of(context).size.width-150,child: Text(berita.beritaJudul,style: TextStyle(fontWeight: FontWeight.w700),)),
+                  SizedBox(width: MediaQuery.of(context).size.width-150,child: Text(berita.beritaJudul!,style: TextStyle(fontWeight: FontWeight.w700),)),
                   SizedBox(height:8),
-                  SizedBox(width: MediaQuery.of(context).size.width-150, child: Text(berita.beritaIsi,maxLines: 3,),
+                  SizedBox(width: MediaQuery.of(context).size.width-150, child: Text(berita.beritaIsi!,maxLines: 3,),
                   ) ],),
             ),
         ],),

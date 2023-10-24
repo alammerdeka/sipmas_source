@@ -2,7 +2,7 @@ part of 'screens.dart';
 
 
 class ValidasiScreen extends StatefulWidget {
-  const ValidasiScreen({Key key}) : super(key: key);
+  const ValidasiScreen({super.key});
 
   @override
   State<ValidasiScreen> createState() => _ValidasiScreenState();
@@ -20,23 +20,23 @@ class _ValidasiScreenState extends State<ValidasiScreen> {
     await Provider.of<BeritaProvider>(context, listen:false).getBeritas();
     await Provider.of<PegawaiProvider>(context, listen:false).getPegawais();
     await Provider.of<SuratProvider>(context, listen:false).getSurats();
-    await Provider.of<SuratProvider>(context, listen:false).getSuratsById(userProvider.user.pengId);
+    await Provider.of<SuratProvider>(context, listen:false).getSuratsById(userProvider.user.pengId!);
   }
   getInit() async {
     UserProvider userProvider = Provider.of<UserProvider>(context, listen: false);
     if(userProvider.user.grupNama=='Masyarakat'){
       Timer(Duration(seconds: 5), (){
-      Navigator.pushReplacement(
+      Navigator.push(
           context, MaterialPageRoute(builder: (context) => MainScreen()));
       });
     }else if(userProvider.user.grupNama=='Pegawai'){
       Timer(Duration(seconds: 5), (){
-      Navigator.pushReplacement(
+      Navigator.push(
           context, MaterialPageRoute(builder: (context) => MainScreenPegawai()));
       });
     }else{
       Timer(Duration(seconds: 5), (){
-      Navigator.pushReplacement(
+      Navigator.push(
           context, MaterialPageRoute(builder: (context) => MainScreenKadin()));
       });
     }

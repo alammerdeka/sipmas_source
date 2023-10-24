@@ -1,6 +1,6 @@
 part of 'pegawai_screens.dart';
 class PegawaiHomeScreen extends StatefulWidget {
-  const PegawaiHomeScreen({Key key}) : super(key: key);
+  const PegawaiHomeScreen({super.key});
 
   @override
   State<PegawaiHomeScreen> createState() => _PegawaiHomeScreenState();
@@ -35,10 +35,10 @@ class _PegawaiHomeScreenState extends State<PegawaiHomeScreen> {
                   'Hallo, ',
                   style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
                 ),
-                SizedBox(
-                  width: 250,
+                Expanded(
+
                   child: Text(
-                    userProvider.user.pengNama,
+                    userProvider.user.pengNama!,
                     style: TextStyle(fontSize: 30),
                   ),
                 ),

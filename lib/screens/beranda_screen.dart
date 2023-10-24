@@ -1,7 +1,7 @@
 part of 'screens.dart';
 
 class BerandaScreen extends StatefulWidget {
-  const BerandaScreen({Key key}) : super(key: key);
+  const BerandaScreen({super.key});
 
   @override
   State<BerandaScreen> createState() => _BerandaScreenState();
@@ -34,10 +34,9 @@ class _BerandaScreenState extends State<BerandaScreen> {
                   'Hallo, ',
                   style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
                 ),
-                SizedBox(
-                  width: 250,
+                Expanded(
                   child: Text(
-                    userProvider.user.pengNama,
+                    userProvider.user.pengNama!,
                     style: TextStyle(fontSize: 30),
                   ),
                 ),
@@ -68,26 +67,33 @@ class _BerandaScreenState extends State<BerandaScreen> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
-                  buttonFitur(Icon(Icons.move_down), 'Pindah', () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => SuratPindahScreen()));
-                  }),
-                  buttonFitur(Icon(Icons.airline_seat_flat), 'Kematian', () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => SuratKematianScreen()));
-                  }),
-                  buttonFitur(
-                      Icon(Icons.accessibility_new_rounded), 'Belum Menikah',
-                      () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => SuratNikahScreen()));
-                  }),
+                  Expanded(
+                    child: CupertinoButton(child: Text('Pindah',style: miniKarla,), onPressed: (){
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => SuratPindahScreen()));
+                    }),
+                  ),
+                  Expanded(
+                    child: CupertinoButton(child: Text('Kematian',style: miniKarla,), onPressed: (){
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => SuratKematianScreen()));
+                    }),
+                  ),
+                  Expanded(
+                    child: CupertinoButton(child: Text('Belum Menikah',style: miniKarla,), onPressed: (){
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => SuratNikahScreen()));
+                    }),
+                  )
+
+
+
                 ],
               ),
             ),
@@ -158,7 +164,7 @@ class _BerandaScreenState extends State<BerandaScreen> {
     }
 
     return RefreshIndicator(
-      onRefresh: () => getInit(userProvider.user.pengId),
+      onRefresh: () => getInit(userProvider.user.pengId!),
       child: ListView(
         children: [
           SizedBox(
@@ -190,7 +196,7 @@ class _BerandaScreenState extends State<BerandaScreen> {
 
   Widget buttonFitur(Icon iconFitur, String title, Function fun) {
     return InkWell(
-      onTap: fun,
+      onTap: fun(),
       child: Container(
         child: Column(
           children: [

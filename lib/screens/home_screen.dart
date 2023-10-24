@@ -1,7 +1,7 @@
 part of 'screens.dart';
 
 class HomeScreen extends StatefulWidget {
-  const HomeScreen({Key key}) : super(key: key);
+  const HomeScreen({super.key});
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
@@ -28,7 +28,7 @@ class _HomeScreenState extends State<HomeScreen> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Text(
-              'KELURAHAN SERANG',
+              'KELURAHAN SERANGs',
               style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
             ),
             Text(' JL.Empat Lima  SERANG, BANTEN')
@@ -66,24 +66,13 @@ class _HomeScreenState extends State<HomeScreen> {
                   ],
                 ),
               ),
+            CupertinoButton(child: Text('Masuk'), onPressed: (){
+              Navigator.of(context).push(MaterialPageRoute(builder: (_)=>LoginScreen()));
+            })
             ],
           ),
         ),
-        bottomNavigationBar:  Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Row(
-            children: [
-              Expanded(
-                  flex: 3,
-                  child: SizedBox(width:30)),
-              Expanded(
-                  flex: 1,
-                  child: longButtons(10,'Masuk',(){
-                    Navigator.push(context, MaterialPageRoute(builder: (_)=>LoginScreen()));
-                  })),
-            ],
-          ),
-        ),
+
       ),
     );
   }

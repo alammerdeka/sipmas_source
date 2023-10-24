@@ -1,25 +1,25 @@
 part of 'models.dart';
 class Surat {
-  String suratPengId;
-  String suratJenis;
-  String suratNama;
-  String suratNik;
-  String suratTempat;
-  String suratTanggal;
-  String suratAgama;
-  String suratStatusKawin;
-  String suratJenisKelamin;
-  String suratInstansi;
-  String suratAlamat;
-  String suratAlasan;
-  String suratPersyaratan;
-  String suratStatus;
-  String suratTujuan;
-  String suratAlasanPindah;
-  String suratPengikut;
-  String suratId;
-  bool status;
-  String message;
+  String? suratPengId;
+  String? suratJenis;
+  String? suratNama;
+  String? suratNik;
+  String? suratTempat;
+  String? suratTanggal;
+  String? suratAgama;
+  String? suratStatusKawin;
+  String? suratJenisKelamin;
+  String? suratInstansi;
+  String? suratAlamat;
+  String? suratAlasan;
+  String? suratPersyaratan;
+  String? suratStatus;
+  String? suratTujuan;
+  String? suratAlasanPindah;
+  String? suratPengikut;
+  String? suratId;
+  bool? status;
+  String? message;
 
   Surat(
       {this.suratPengId,

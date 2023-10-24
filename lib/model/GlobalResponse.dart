@@ -1,7 +1,7 @@
 part of 'models.dart';
 class GlobalResponse {
-  String message;
-  bool status;
+  String? message;
+  bool? status;
 
   GlobalResponse({this.message, this.status});
 

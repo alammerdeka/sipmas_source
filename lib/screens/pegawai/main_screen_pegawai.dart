@@ -1,6 +1,6 @@
 part of 'pegawai_screens.dart';
 class MainScreenPegawai extends StatefulWidget {
-  const MainScreenPegawai({Key key}) : super(key: key);
+  const MainScreenPegawai({super.key});
 
   @override
   State<MainScreenPegawai> createState() => _MainScreenPegawaiState();

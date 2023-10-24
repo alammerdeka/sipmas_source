@@ -18,8 +18,8 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
   TextEditingController instansiController = TextEditingController();
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
-  DateTime _dateTime;
-  String _textDate;
+  DateTime? _dateTime;
+  String? _textDate;
   String selectJenkel = "";
   String selectAgama = "";
   String selectKawin = "";
@@ -39,7 +39,7 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
 
   var myFormat = DateFormat('d-MM-yyyy');
   Future<Null> selectedTime(BuildContext context) async {
-    final DateTime picked = await showDatePicker(
+    final DateTime? picked = await showDatePicker(
         context: context,
         helpText: 'Tanggal Lahir',
         initialDate: DateTime.now(),
@@ -86,7 +86,7 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
                 child: TextFormField(
                   controller: namaController,
                   keyboardType: TextInputType.text,
-                  decoration: fieldPrefIcon(Icon(Icons.person), userProvider.user.pengNama!=null?userProvider.user.pengNama:''),
+                  decoration: fieldPrefIcon(Icon(Icons.person), userProvider.user.pengNama!=null?userProvider.user.pengNama!:''),
                 ),
                 decoration: BoxDecoration(
                   color: Colors.grey.shade100,
@@ -104,7 +104,7 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
                 child: TextFormField(
                   controller: nikController,
                   keyboardType: TextInputType.number,
-                  decoration: fieldPrefIcon(Icon(Icons.workspaces), userProvider.user.pengNik!=null?userProvider.user.pengNik:''),
+                  decoration: fieldPrefIcon(Icon(Icons.workspaces), userProvider.user.pengNik!=null?userProvider.user.pengNik!:''),
                 ),
                 decoration: BoxDecoration(
                   color: Colors.grey.shade100,
@@ -123,7 +123,7 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
                   controller: tempatController,
                   keyboardType: TextInputType.text,
                   decoration:
-                  fieldPrefIcon(Icon(Icons.water_damage_outlined),  userProvider.user.pengTempat!=null?userProvider.user.pengTempat:''),
+                  fieldPrefIcon(Icon(Icons.water_damage_outlined),  userProvider.user.pengTempat!=null?userProvider.user.pengTempat!:''),
                 ),
                 decoration: BoxDecoration(
                   color: Colors.grey.shade100,
@@ -151,7 +151,7 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
                             BorderSide(width: 0, style: BorderStyle.none)),
                         labelText: _textDate == null
                             ? userProvider.user.pengTanggal!=null?userProvider.user.pengTanggal:'  Pilih Tanggal'
-                            : '  ${myFormat.format(_dateTime)}',
+                            : '  ${myFormat.format(_dateTime!)}',
                         labelStyle: _textDate == null
                             ? TextStyle(color: Colors.grey, fontSize: 14)
                             : TextStyle(
@@ -193,7 +193,7 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
                   },
                   onSaved: (value){
                     setState(() {
-                      selectJenkel = value;
+                      selectJenkel = value!;
                     });
                   },
                 ),
@@ -218,7 +218,7 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
                   labelText: userProvider.user.pengAgama!=null?userProvider.user.pengAgama:'Pilih',
                   items: listAgama,
                   onChanged: (value) => selectAgama =value,
-                  onSaved: (value) => selectAgama =value,
+                  onSaved: (value) => selectAgama =value!,
                 ),
               ), //agama
               Padding(
@@ -241,7 +241,7 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
                   labelText: userProvider.user.pengStatusKawin!=null?userProvider.user.pengStatusKawin:'Pilih',
                   items: listKawin,
                   onChanged: (value) => selectKawin = value,
-                  onSaved: (value) => selectKawin = value,
+                  onSaved: (value) => selectKawin = value!,
                 ),
               ), //status kawin
               Padding(
@@ -257,7 +257,7 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
                     keyboardType: TextInputType.text,
                     obscureText: false,
                     decoration:
-                    fieldPrefIcon(Icon(Icons.location_on_sharp), userProvider.user.pengAlamat!=null?userProvider.user.pengAlamat:'Pilih')),
+                    fieldPrefIcon(Icon(Icons.location_on_sharp), userProvider.user.pengAlamat!=null?userProvider.user.pengAlamat!:'Pilih')),
                 decoration: BoxDecoration(
                   color: Colors.grey.shade100,
                   borderRadius: BorderRadius.circular(10),
@@ -275,7 +275,7 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
                     controller: telpController,
                     keyboardType: TextInputType.number,
                     obscureText: false,
-                    decoration: fieldPrefIcon(Icon(Icons.phone), userProvider.user.pengTlp!=null?userProvider.user.pengTlp:'Pilih')),
+                    decoration: fieldPrefIcon(Icon(Icons.phone), userProvider.user.pengTlp!=null?userProvider.user.pengTlp!:'Pilih')),
                 decoration: BoxDecoration(
                   color: Colors.grey.shade100,
                   borderRadius: BorderRadius.circular(10),
@@ -301,7 +301,7 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
                   labelText: userProvider.user.pengInstansi!=null?userProvider.user.pengInstansi:'Pilih',
                   items: listInstansi,
                   onChanged: (value) => selectInstansi = value,
-                  onSaved: (value) => selectInstansi = value,
+                  onSaved: (value) => selectInstansi = value!,
                 ),
               ),
               Padding(
@@ -317,7 +317,7 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
                     keyboardType: TextInputType.text,
                     obscureText: false,
                     enabled: false,
-                    decoration: fieldPrefIcon(Icon(Icons.email), userProvider.user.pengEmail!=null?userProvider.user.pengEmail:'')),
+                    decoration: fieldPrefIcon(Icon(Icons.email), userProvider.user.pengEmail!=null?userProvider.user.pengEmail!:'')),
                 decoration: BoxDecoration(
                   color: Colors.grey.shade100,
                   borderRadius: BorderRadius.circular(10),
@@ -344,11 +344,11 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
               SizedBox(
                 height: 20,
               ),
-              _isLoading?longButtons(MediaQuery.of(context).size.width,'Ubah', () async {
+            _isLoading?CupertinoButton(child: Text('Ubah Profil'), onPressed: ()async{
                 setState(() {
                   _isLoading = false;
                 });
-                User user = await authProvider.editPegawai(
+                User? user = await authProvider.editPegawai(
                     userProvider.user.pengId,
                     namaController.text.isEmpty?userProvider.user.pengNama:namaController.text,
                     nikController.text.isEmpty?userProvider.user.pengNik:nikController.text,
@@ -365,12 +365,12 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
                     passwordController.text.isEmpty?'':'',
                     userProvider.user.grupNama=='Kepala Dinas'?'6':userProvider.user.grupNama=='Masyarakat'?'7':userProvider.user.grupNama=='Pegawai'?'5':'6',
                     '1');
-                if (user.status == false) {
+                if (user!.status == false) {
                   setState(() {
                     _isLoading = true;
                   });
-                  print(user.pengPass);
-                  showError(user.pengPass);
+                  print(user!.pengPass);
+                  showError(user.pengPass!);
                 } else {
                   showSuccess('Berhasil ubah profile');
 
